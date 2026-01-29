@@ -4,29 +4,26 @@ import winsound
 import time
 
 def get_entropy(roi):
-    # This is the math you learned in the ML specialization!
     hist = cv2.calcHist([roi], [0], None, [256], [0, 256])
     hist = hist.ravel() / (hist.sum()+1e-7) # Probability Distribution P(x)
     hist = hist[hist > 0] # Remove zero probabilities
     return -np.sum(hist * np.log2(hist)) # Shannon Entropy Formula
 
-# Use your phone's IP camera URL from Grok's script
-# cv2.CAP_DSHOW forces Python to use the Windows DirectShow driver
-# We add + cv2.CAP_DSHOW to the index
-cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW) # Or replace with your "http://..." URL
-center_history = []
+
+cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW)
+history = {"LEFT": [], "CENTER": [], "RIGHT": []}
 last_beep_time = 0
 
 
 while True:
     ret, frame = cap.read()
-    if not ret: break
+    if not ret: break  # to safe launch
     
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    h, w = gray.shape
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY) 
+    h, w = gray.shape # h is length w i bredth
     
     # Let's split the bottom of the screen into 3 Matrices: Left, Center, Right
-    # This represents the path directly in front of the user
+    
     cell_w = w // 3
     floor_y = int(h * 0.6) # Only look at the bottom 40% of the screen (the floor)
     
@@ -36,40 +33,48 @@ while True:
         "RIGHT": gray[floor_y:, 2*cell_w:w]
     }
     
-    for i, (name, area) in enumerate(zones.items()):
-        # A list to store the last few readings for the center
+    for i, (name, area) in enumerate(zones.items()): # numerate teh zones 
         
-        area = cv2.Canny(area, 50, 150)
-        area = cv2.normalize(area, None, 0, 255, cv2.NORM_MINMAX)
+        area = cv2.normalize(area, None, 0, 255, cv2.NORM_MINMAX) #stretches so it uses all 255 gray intensity levels 
+        area = cv2.Canny(area, 20, 100) #pixels<50 ignore and pixel>150 solid or ocnverts to 255
+        
         entropy_val = get_entropy(area)
-        # Determine safety
-        color = (0, 255, 0)
+       
+        color = (0, 255, 0) # green
+        history[name].append(entropy_val)
         
+        if len(history[name])> 10:
+                history[name].pop(0)
         
-        # AUDI0 TRIGGER: If the center path is blocked, make a noise!
-        if name == "CENTER" :
+        # AUDI0 TRIGGER: I
+        if name ==  "CENTER" :  
 
-            center_history.append(entropy_val)
-            if len(center_history)> 10:
-                center_history.pop(0)
+           
             
-            avg = sum(center_history)/len(center_history)
+            avg = sum(history["CENTER"]) / (len(history["CENTER"]) + 1e-7)
+            avg_left = sum(history["LEFT"]) / (len(history["LEFT"]) + 1e-7)
+            avg_right = sum(history["RIGHT"]) / (len(history["RIGHT"]) + 1e-7)
+            print(f"AVG: {avg:.4f}")
 
-            is_dangerous = avg > 0.35
-            color = (0, 0, 255) if is_dangerous else (0, 255, 0)
-            cv2.rectangle(frame, (cell_w, floor_y), (2*cell_w, h), color, 2)
+            is_dangerous = avg > 0.15
+            color = (0, 0, 255) if is_dangerous else (0, 255, 0)   # turns red if high entropy and green if its at optimal entropy
+            cv2.rectangle(frame, (cell_w, floor_y), (2*cell_w, h), color, 2) #makes a recntangular box 
             
-            # Frequency 1000Hz, Duration 100ms
-            # Note: This will slightly slow down your FPS while it beeps
+           
             if is_dangerous and (time.time() - last_beep_time > 1):
-                winsound.Beep(1000, 150)
-                last_beep_time = time.time()
-        
+                
+                    if avg_left<avg_right:
+                        winsound.Beep(2000, 150)
+                        last_beep_time = time.time()
+                    elif avg_right<avg_left:
+                        winsound.Beep(500,150)
+                        last_beep_time = time.time()
+                
         # Draw text
-        cv2.putText(frame, f"{name}: {entropy_val:.2f}", (10 + (i*200), 50), 
+        cv2.putText(frame, f"{name}: {entropy_val:.2f}", (10 + (i*200), 50),  # shows text
                     cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
-    cv2.imshow("Synapse-Echo: Month 1 Spatial Test", frame)
-    if cv2.waitKey(1) & 0xFF == ord('q'): break
+    cv2.imshow("Synapse-Echo: Month 1 Spatial Test", frame) #constnatly updating the video or using the for loop
+    if cv2.waitKey(1) & 0xFF == ord('q'): break  # wait for 1 millisecond for image to process and q to quit
 
-cap.release()
-cv2.destroyAllWindows()
+cap.release() # clena up crew .release , release the hardware attached to it
+cv2.destroyAllWindows()# wipes ram
