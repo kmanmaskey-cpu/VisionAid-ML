@@ -13,7 +13,8 @@ def get_entropy(roi):
 cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW)
 history = {"LEFT": [], "CENTER": [], "RIGHT": []}
 last_beep_time = 0
-
+is_calibrated = False
+math = 0.15
 
 while True:
     ret, frame = cap.read()
@@ -43,8 +44,12 @@ while True:
         color = (0, 255, 0) # green
         history[name].append(entropy_val)
         
-        if len(history[name])> 10:
-                history[name].pop(0)
+        if is_calibrated :
+            if len(history[name])> 10:
+                    history[name].pop(0)
+        else:
+             math = np.mean(history['CENTER'][0:30])+2*np.std(history['CENTER'][0:30])
+             is_calibrated= True
         
         # AUDI0 TRIGGER: I
         if name ==  "CENTER" :  
@@ -56,7 +61,7 @@ while True:
             avg_right = sum(history["RIGHT"]) / (len(history["RIGHT"]) + 1e-7)
             print(f"AVG: {avg:.4f}")
 
-            is_dangerous = avg > 0.15
+            is_dangerous = avg > math
             color = (0, 0, 255) if is_dangerous else (0, 255, 0)   # turns red if high entropy and green if its at optimal entropy
             cv2.rectangle(frame, (cell_w, floor_y), (2*cell_w, h), color, 2) #makes a recntangular box 
             
