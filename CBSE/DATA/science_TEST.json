@@ -1,0 +1,182 @@
+[
+    {
+        "number": 1,
+        "question": "1\nIdentify the product which represents the solid state in the above reaction.",
+        "options": [
+            "Barium chloride",
+            "Barium sulphate",
+            "Sodium chloride",
+            "Sodium sulphate"
+        ],"correct": "b"
+    },
+    {
+        "number": 2,
+        "question": "The colour of the solution observed after 30 minutes of placing zinc metal to copper 1\nsulphate solution is",
+        "options": [
+            "Blue",
+            "Colourless",
+            "Dirty green",
+            "Reddish Brown"
+        ],"correct": "b"
+    },
+    {
+        "number": 3,
+        "question": "Mild non-corrosive basic salt is:",
+        "options": [
+            "Ca(OH)2",
+            "NaCl",
+            "NaOH",
+            "NaHCO3"
+        ],"correct": "d"
+    },
+    {
+        "number": 4,
+        "question": "On adding dilute sulphuric acid to a test tube containing a metal \u2018X\u2019, a colourless gas is 1\nproduced when a burning match stick is brought near it. Which of the following correctly\nrepresents metal \u2018X\u2019?",
+        "options": [
+            "Sodium",
+            "Sulphur",
+            "Copper",
+            "Silver"
+        ],"correct": "a"
+    },
+    {
+        "number": 5,
+        "question": "Which one of the following correctly represents Sodium oxide?",
+        "options": [
+            "Na2O",
+            "NaO2",
+            "Na2O2",
+            "NaO"
+        ],"correct": "a"
+    },
+    {
+        "number": 6,
+        "question": "An element with atomic number_____ will form a basic oxide. 1",
+        "options": [
+            "7 (2,5)",
+            "17 (2,8,7)",
+            "14 (2,8,4)",
+            "11 (2,8,1)"
+        ],"correct": "d"
+    },
+    {
+        "number": 7,
+        "question": "An element \u2018M' has 50% of the electrons filled in the 3rd shell as in the 2nd shell. The 1\natomic number of \u2018M\u2019 is:",
+        "options": [
+            "10",
+            "12",
+            "14",
+            "18"
+        ],"correct": "c"
+    },
+    {
+        "number": 8,
+        "question": "Generally food is broken and absorbed within the body of organisms. In which of the 1\nfollowing organisms is it done outside the body?",
+        "options": [
+            "Amoeba",
+            "Mushroom",
+            "Paramoecium",
+            "Lice"
+        ],"correct": "b"
+    },
+    {
+        "number": 9,
+        "question": "Receptors are usually located in sense organs. Gustatory receptors are present in 1",
+        "options": [
+            "tongue",
+            "nose",
+            "eye",
+            "ear"
+        ],"correct": "a"
+    },
+    {
+        "number": 10,
+        "question": "1\nA farmer wants to grow banana plants genetically similar enough to the plants already\navailable in his field. Which one of the following methods would you suggest for this\npurpose?",
+        "options": [
+            "Regeneration",
+            "Budding",
+            "Vegetative propagation",
+            "Sexual reproduction"
+        ],"correct": "c"
+    },
+    {
+        "number": 12,
+        "question": "A sportsman, after a long break of his routine exercise, suffered muscular cramps during a 1\nheavy exercise session. This happened due to:",
+        "options": [
+            "lack of carbon dioxide and formation of pyruvate.",
+            "presence of oxygen and formation of ethanol.",
+            "lack of oxygen and formation of lactic acid.",
+            "lack of oxygen and formation of carbon dioxide."
+        ],"correct": "c"
+    },
+    {
+        "number": 13,
+        "question": "1\nAn object is placed in front of a convex mirror. Its image is formed :",
+        "options": [
+            "at a distance equal to the object distance in front of the mirror.",
+            "at twice the distance of the object in front of the mirror.",
+            "half the distance of the object in front of the mirror.",
+            "behind the mirror and it\u2019s position varies according to the object distance."
+        ],"correct": "d"
+    },
+    {
+        "number": 14,
+        "question": "1\nWhen light enters the atmosphere it strikes on extremely fine particles, which deflect the\nrays of light in all possible directions, This is due to -",
+        "options": [
+            "reflection of light",
+            "atmospheric refraction",
+            "scattering of light",
+            "dispersion of light"
+        ],"correct": "c"
+    },
+    {
+        "number": 15,
+        "question": "1\nIn 1987, an agreement was formulated by the United Nations Environment Programme\n(UNEP) to freeze the production of \u201cX\u201d to prevent depletion of \u201cY\u201d. \u201cX\u201d and \u201cY\u201d\nrespectively referred here are:",
+        "options": [
+            "Ozone; CFCs",
+            "CFCs; rays UV",
+            "CFCs; Ozone",
+            "UV rays; Diatomic oxygen"
+        ],"correct": "c"
+    },
+    {
+        "number": 16,
+        "question": "1\nWhich of the following features relates to biodegradable substances?",
+        "options": [
+            "Broken down by biological processes",
+            "Remain inert",
+            "Persist in environment for long time",
+            "May harm the ecosystem \nQuestion No. 17 to 20 consist of two statements \u2013 Assertion (A) and Reason (R). Answer\nthese questions selecting the appropriate option given below:"
+        ],"correct": "a"
+    },
+    {
+        "number": 17,
+        "question": "Assertion: Rusting of Iron is endothermic in nature. 1\nReason: As the reaction is slow, the release of heat is barely evident.",
+        "options": [
+            "Both Assertion (A) and Reason (R) are true and (R) is the correct explanation of (A).",
+            "Both Assertion (A) and Reason (R) are true but (R) is not the correct explanation of (A).",
+            "Assertion (A) is true but (R) is false.",
+            "Assertion (A) is false but (R) is true."
+        ],"correct": "d"
+    },
+    {
+        "number": 18,
+        "question": "Assertion: Probability of survival of an organism produced through sexual reproduction is 1\nmore than that of organism produced through asexual mode.\nReason: Variations provide advantages to individuals for survival.",
+        "options": [
+            "Both Assertion (A) and Reason (R) are true and (R) is the correct explanation of (A).",
+            "Both Assertion (A) and Reason (R) are true but (R) is not the correct explanation of (A).",
+            "Assertion (A) is true but (R) is false.",
+            "Assertion (A) is false but (R) is true."
+        ],"correct": "a"
+    },
+    {
+        "number": 20,
+        "question": "Assertion: Biodegradable substances result in the formation of compost and natural 1\nreplenishment.\nReason: It is due to breakdown of complex inorganic substances into simple organic\nsubstances.\nSection-B\nQuestion No. 21 to 26 are very short answer questions",
+        "options": [
+            "Both Assertion (A) and Reason (R) are true and (R) is the correct explanation of (A).",
+            "Both Assertion (A) and Reason (R) are true but (R) is not the correct explanation of (A).",
+            "Assertion (A) is true but (R) is false.",
+            "Assertion (A) is false but (R) is true."
+        ],"correct": "c"
+    }
+]

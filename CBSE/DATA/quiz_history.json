@@ -1,0 +1,284 @@
+[
+    {
+        "date": "2026-01-21 02:23",
+        "score": 3,
+        "total": 18,
+        "percentage": 16.67,
+        "time_seconds": 12.84,
+        "avg_speed_per_q": 0.71
+    },
+    {
+        "date": "2026-01-21 02:34",
+        "score": 3,
+        "total": 18,
+        "percentage": 16.67,
+        "time_seconds": 10.84,
+        "avg_speed_per_q": 0.6
+    },
+    {
+        "date": "2026-01-22 01:22",
+        "score": 3,
+        "total": 18,
+        "percentage": 16.67,
+        "time_seconds": 8.19,
+        "avg_speed_per_q": 0.46
+    },
+    {
+        "date": "2026-01-22 01:44",
+        "score": 5,
+        "total": 18,
+        "percentage": 27.78,
+        "time_seconds": 9.79,
+        "avg_speed_per_q": 0.54,
+        "missed_questions": [
+            1,
+            2,
+            3,
+            6,
+            7,
+            8,
+            10,
+            12,
+            13,
+            14,
+            15,
+            17,
+            20
+        ]
+    },
+    {
+        "date": "2026-01-22 02:04",
+        "score": 3,
+        "total": 18,
+        "percentage": 16.67,
+        "time_seconds": 16.65,
+        "avg_speed_per_q": 0.92,
+        "missed_questions": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            9,
+            10,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            20
+        ]
+    },
+    {
+        "date": "2026-01-22 02:05",
+        "score": 3,
+        "total": 18,
+        "percentage": 16.67,
+        "time_seconds": 25.88,
+        "avg_speed_per_q": 1.44,
+        "missed_questions": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            9,
+            10,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            20
+        ]
+    },
+    {
+        "date": "2026-01-22 02:26",
+        "score": 2,
+        "total": 15,
+        "percentage": 13.33,
+        "time_seconds": 31.03,
+        "avg_speed_per_q": 2.07,
+        "missed_questions": [
+            3,
+            4,
+            7,
+            9,
+            10,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            20
+        ]
+    },
+    {
+        "date": "2026-01-22 02:27",
+        "score": 1,
+        "total": 13,
+        "percentage": 7.69,
+        "time_seconds": 14.77,
+        "avg_speed_per_q": 1.14,
+        "missed_questions": [
+            3,
+            4,
+            9,
+            10,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            20
+        ]
+    },
+    {
+        "date": "2026-01-22 02:27",
+        "score": 4,
+        "total": 12,
+        "percentage": 33.33,
+        "time_seconds": 12.38,
+        "avg_speed_per_q": 1.03,
+        "missed_questions": [
+            3,
+            10,
+            12,
+            13,
+            14,
+            15,
+            17,
+            20
+        ]
+    },
+    {
+        "date": "2026-01-23 02:54",
+        "score": 5,
+        "total": 10,
+        "percentage": 50.0,
+        "time_seconds": 14.33,
+        "avg_speed_per_q": 1.43,
+        "missed_questions": [
+            3,
+            5,
+            18,
+            20,
+            5
+        ]
+    },
+    {
+        "date": "2026-01-23 02:54",
+        "score": 1,
+        "total": 4,
+        "percentage": 25.0,
+        "time_seconds": 6.7,
+        "avg_speed_per_q": 1.67,
+        "missed_questions": [
+            3,
+            5,
+            18
+        ]
+    },
+    {
+        "date": "2026-01-24 01:11",
+        "score": 0,
+        "total": 10,
+        "percentage": 0.0,
+        "time_seconds": 23.81,
+        "avg_speed_per_q": 2.38,
+        "missed_questions": [
+            10,
+            5,
+            18,
+            3,
+            1,
+            16,
+            2,
+            14,
+            13,
+            15
+        ]
+    },
+    {
+        "date": "2026-01-24 01:11",
+        "score": 1,
+        "total": 10,
+        "percentage": 10.0,
+        "time_seconds": 4.51,
+        "avg_speed_per_q": 0.45,
+        "missed_questions": [
+            14,
+            4,
+            20,
+            3,
+            5,
+            15,
+            18,
+            6,
+            10
+        ]
+    },
+    {
+        "date": "2026-01-24 01:11",
+        "score": 4,
+        "total": 10,
+        "percentage": 40.0,
+        "time_seconds": 3.84,
+        "avg_speed_per_q": 0.38,
+        "missed_questions": [
+            14,
+            10,
+            20,
+            8,
+            13,
+            3
+        ]
+    },
+    {
+        "date": "2026-01-24 01:11",
+        "score": 6,
+        "total": 18,
+        "percentage": 33.33,
+        "time_seconds": 6.18,
+        "avg_speed_per_q": 0.34,
+        "missed_questions": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            8,
+            9,
+            13,
+            16,
+            17,
+            18
+        ]
+    },
+    {
+        "date": "2026-01-24 01:11",
+        "score": 3,
+        "total": 10,
+        "percentage": 30.0,
+        "time_seconds": 3.47,
+        "avg_speed_per_q": 0.35,
+        "missed_questions": [
+            5,
+            12,
+            10,
+            16,
+            18,
+            8,
+            4
+        ]
+    }
+]
