@@ -11,10 +11,13 @@ def get_entropy(roi):
 
 
 cap = cv2.VideoCapture(0 + cv2.CAP_DSHOW)
+
 history = {"LEFT": [], "CENTER": [], "RIGHT": []}
 last_beep_time = 0
 is_calibrated = False
 math = 0.15
+counter = 0
+last_heartbeat_time = 0
 
 while True:
     ret, frame = cap.read()
@@ -28,6 +31,7 @@ while True:
     cell_w = w // 3
     floor_y = int(h * 0.6) # Only look at the bottom 40% of the screen (the floor)
     
+    
     zones = {
         "LEFT": gray[floor_y:, 0:cell_w],
         "CENTER": gray[floor_y:, cell_w:2*cell_w],
@@ -37,9 +41,25 @@ while True:
     for i, (name, area) in enumerate(zones.items()): # numerate teh zones 
         
         area = cv2.normalize(area, None, 0, 255, cv2.NORM_MINMAX) #stretches so it uses all 255 gray intensity levels 
-        area = cv2.Canny(area, 20, 100) #pixels<50 ignore and pixel>150 solid or ocnverts to 255
+        area = cv2.GaussianBlur(area, (5, 5), 0)
+        area = cv2.Canny(area, 25, 75) #pixels<50 ignore and pixel>150 solid or ocnverts to 255
+        kernel = np.ones((3,3), np.uint8)
+        area = cv2.dilate(area, kernel, iterations=1)#connects hte dots and thicken the edges so it optimizes the canny
         
-        entropy_val = get_entropy(area)
+        if name == "CENTER":
+            # Split CENTER into 3 horizontal slices: Top (Far), Mid, Bottom (Near)
+            zh, zw = area.shape
+            s = zh // 3
+            far_slice  = area[0:s, :]
+            mid_slice  = area[s:2*s, :]
+            near_slice = area[2*s:zh, :]
+            
+            # Apply Perspective Weights: Near is 1.5x more important than Far
+            entropy_val = (get_entropy(near_slice) * 1.5 + 
+                           get_entropy(mid_slice) * 1.0 + 
+                           get_entropy(far_slice) * 0.7) / 3.2
+        else:
+            entropy_val = get_entropy(area)
        
         color = (0, 255, 0) # green
         history[name].append(entropy_val)
@@ -47,33 +67,42 @@ while True:
         if is_calibrated :
             if len(history[name])> 10:
                     history[name].pop(0)
-        else:
-             math = np.mean(history['CENTER'][0:30])+2*np.std(history['CENTER'][0:30])
-             is_calibrated= True
+        else:   #takes 30 entropy smples then does the math on it
+            if len(history['CENTER'])>=30:
+                math = np.mean(history['CENTER'][0:30])+2*np.std(history['CENTER'][0:30])
+                is_calibrated= True
         
         # AUDI0 TRIGGER: I
-        if name ==  "CENTER" :  
+        if name ==  "CENTER" : 
 
-           
-            
             avg = sum(history["CENTER"]) / (len(history["CENTER"]) + 1e-7)
             avg_left = sum(history["LEFT"]) / (len(history["LEFT"]) + 1e-7)
             avg_right = sum(history["RIGHT"]) / (len(history["RIGHT"]) + 1e-7)
-            print(f"AVG: {avg:.4f}")
+            
 
             is_dangerous = avg > math
-            color = (0, 0, 255) if is_dangerous else (0, 255, 0)   # turns red if high entropy and green if its at optimal entropy
-            cv2.rectangle(frame, (cell_w, floor_y), (2*cell_w, h), color, 2) #makes a recntangular box 
+            if is_dangerous:
+                counter += 1
+            else: 
+                counter = 0
+
             
-           
-            if is_dangerous and (time.time() - last_beep_time > 1):
-                
-                    if avg_left<avg_right:
-                        winsound.Beep(2000, 150)
-                        last_beep_time = time.time()
-                    elif avg_right<avg_left:
-                        winsound.Beep(500,150)
-                        last_beep_time = time.time()
+            if counter >= 5:
+                color = (0, 0, 255)    # turns red if high entropy 
+                cv2.rectangle(frame, (cell_w, floor_y), (2*cell_w, h), color, 2) #makes a recntangular box 
+                cv2.line(frame, (cell_w,floor_y+s), (2*cell_w,floor_y+s), (255, 255, 255) , 2)
+                cv2.line(frame, (cell_w, floor_y + 2*s), (2*cell_w, floor_y + 2*s), (255, 255, 255), 1)
+                severity =avg-math
+                beep_delay = max(0.1, 1.0 - (severity * 5))
+                if (time.time() - last_beep_time > beep_delay):
+                    pitch = 2000 if avg_left < avg_right else 500
+                    winsound.Beep(pitch, 150)
+                    last_beep_time = time.time()
+                    
+            elif (time.time() - last_heartbeat_time > 2.0):
+                winsound.Beep(150, 50) # Very low frequency, very short
+                last_heartbeat_time = time.time()
+            
                 
         # Draw text
         cv2.putText(frame, f"{name}: {entropy_val:.2f}", (10 + (i*200), 50),  # shows text
