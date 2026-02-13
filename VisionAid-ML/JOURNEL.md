@@ -48,3 +48,9 @@ Gaussian Blur: Added a small blur to filter out digital sensor noise that was ca
  solution :-
  Optical Flow: Implemented Farneback’s algorithm to calculate a motion_mag and an expansion_multiplier. This scales the danger score based on how fast the user is moving
 
+ 13th feb , 2026
+goal today : make the program more accurate so that when the counter see's a clean floor before the counter passes 5 counter it dosent directly reset the ocunter to 0 but sloewl decreases counter so it has a shrot term memory and the bpm increases when the object comes near.
+
+solution : 
+used severity to slowely increase bpm by a multiplier and the counter decreases when it sees a clear floor  by this code line- counter = max(0, counter - 1) 
+
